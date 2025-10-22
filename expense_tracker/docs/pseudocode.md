@@ -1,5 +1,5 @@
 # Main Menu Flow (CLI)
-
+```
 FUNCTION main():
     CONNECT to database
 
@@ -27,10 +27,10 @@ FUNCTION main():
     
     DISCONNECT database
 END FUNCTION
-
+```
 
 # Add Expense
-
+```
 FUNCTION add_expense():
     PRINT("=== Add New Expense ===")
     description ← INPUT("Description: ")
@@ -48,10 +48,10 @@ FUNCTION add_expense():
 
     PRINT("Expense added successfully.")
 END FUNCTION
-
+```
 
 # View Expenses
-
+```
 FUNCTION view_expenses():
     PRINT("=== View Expenses ===")
     QUERY ← """
@@ -63,10 +63,10 @@ FUNCTION view_expenses():
     results ← EXECUTE QUERY
     DISPLAY results in table format
 END FUNCTION
-
+```
 
 # Edit Expense
-
+```
 FUNCTION edit_expense():
     id ← INPUT("Enter expense ID to edit: ")
     record ← FETCH("SELECT * FROM expenses WHERE id = ?", id)
@@ -90,10 +90,10 @@ FUNCTION edit_expense():
     EXECUTE UPDATE_QUERY with (new_desc, new_amount, new_cat, new_date, id)
     PRINT("Expense updated successfully.")
 END FUNCTION
-
+```
 
 # Delete Expense
-
+```
 FUNCTION delete_expense():
     id ← INPUT("Enter expense ID to delete: ")
     CONFIRM ← INPUT("Are you sure? (y/n): ")
@@ -101,10 +101,10 @@ FUNCTION delete_expense():
     EXECUTE "DELETE FROM expenses WHERE id = ?", id
     PRINT("Expense deleted.")
 END FUNCTION
-
+```
 
 # Category Menu
-
+```
 FUNCTION category_menu():
     LOOP:
         PRINT("[1] Add Category")
@@ -121,10 +121,10 @@ FUNCTION category_menu():
             CASE "0": RETURN
             DEFAULT: PRINT("Invalid option.")
 END FUNCTION
-
+```
 
 # Show Summary
-
+```
 FUNCTION show_summary():
     PRINT("=== Expense Summary by Category ===")
     QUERY ← """
@@ -137,10 +137,10 @@ FUNCTION show_summary():
     results ← EXECUTE QUERY
     DISPLAY results in table format
 END FUNCTION
-
+```
 
 # Helper: SELECT_CATEGORY()
-
+```
 FUNCTION SELECT_CATEGORY():
     results ← FETCH_ALL("SELECT id, name FROM categories ORDER BY name")
     DISPLAY categories with IDs
@@ -149,5 +149,5 @@ FUNCTION SELECT_CATEGORY():
         RETURN NULL
     RETURN choice
 END FUNCTION
-
+```
 
